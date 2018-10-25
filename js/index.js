@@ -14,7 +14,7 @@ const speed = 0.5;
 // Easing factor of transition animations
 const easingFactor = 0.06;
 // Interval of auto transition
-const refreshInterval = 20000;
+const refreshInterval = 8000;
 
 // Storage arrays
 // Position of points
@@ -30,6 +30,8 @@ let newColor = [];
 let newCPoints = [];
 // New points to transition to
 const newPoints = [];
+
+let refreshTimer = Date.now();
 
 // Setup function runs once
 function setup() {
@@ -63,7 +65,7 @@ function setup() {
     console.log('loop 1');
   }
 
-  setInterval(refresh, refreshInterval);
+  // setInterval(refresh, refreshInterval);
 }
 
 
@@ -148,6 +150,17 @@ function draw() {
   //   fill(0,255,0)
   //     ellipse(newPoints[0], newPoints[1], 50,50)
   //       ellipse(newPoints[2], newPoints[3], 50,50)
+  
+  if(Date.now() - refreshTimer > refreshInterval) {
+    refresh();
+  }
+  
+textSize(14);
+fill(255);
+textFont('Helvetica')
+noStroke();
+textAlign(CENTER)
+text('Press spacebar to generate new shape', width/2, height - 30);
 }
 
 
@@ -169,4 +182,10 @@ function refresh() {
 
 
   newCPoints = [random(-50, width + 50), random(-50, height + 50), random(-50, width + 50), random(-50, height + 50)];
+  
+  refreshTimer = Date.now();
 }
+
+// function mouseReleased() {
+//   saveCanvas();
+// }
