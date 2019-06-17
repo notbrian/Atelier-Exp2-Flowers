@@ -1,0 +1,1 @@
+var capturer = new CCapture( { format: 'webm' } );

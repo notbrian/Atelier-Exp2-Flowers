@@ -1,6 +1,6 @@
 /* these styles remove the space & scrollbars around the canvas */  
 body {
-  background-color: black;
+  background-color: white;
   margin:0; 
   padding:0;
 }

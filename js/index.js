@@ -33,6 +33,14 @@ const newPoints = [];
 
 let refreshTimer = Date.now();
 
+var capturer = new CCapture( { 
+  format: 'webm',
+  framerate: 60,
+  autoSaveTime: 120,
+
+} );
+
+
 // Setup function runs once
 function setup() {
   createCanvas(windowHeight, windowHeight);
@@ -64,7 +72,7 @@ function setup() {
     points[i] = p;
     console.log('loop 1');
   }
-
+  capturer.start();
   // setInterval(refresh, refreshInterval);
 }
 
@@ -155,12 +163,21 @@ function draw() {
     refresh();
   }
   
-textSize(14);
-fill(255);
-textFont('Helvetica')
-noStroke();
-textAlign(CENTER)
-text('Press spacebar to generate new shape', width/2, height - 30);
+// textSize(14);
+// fill(255);
+// textFont('Helvetica')
+// noStroke();
+// textAlign(CENTER)
+// text('Press spacebar to generate new shape', width/2, height - 30);
+  capturer.capture(document.getElementById('defaultCanvas0'));
+
+  // if (millis() > 1000) {
+  //   noLoop();
+  //   console.log('finished recording.');
+  //   capturer.stop();
+  //   capturer.save();
+  //   return;
+  // }
 }
 
 
