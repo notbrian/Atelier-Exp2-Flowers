@@ -36,7 +36,7 @@ let refreshTimer = Date.now();
 var capturer = new CCapture( { 
   format: 'webm',
   framerate: 60,
-  autoSaveTime: 120,
+  autoSaveTime: 60,
 
 } );
 
